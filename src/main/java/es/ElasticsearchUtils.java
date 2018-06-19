@@ -3,6 +3,8 @@ package es;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexResponse;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsRequest;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsResponse;
+import org.elasticsearch.action.admin.indices.exists.types.TypesExistsRequest;
+import org.elasticsearch.action.admin.indices.exists.types.TypesExistsResponse;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.index.IndexRequestBuilder;
@@ -86,11 +88,24 @@ public class ElasticsearchUtils {
      * @throws Exception
      */
     public boolean isIndexExists(String indexName) throws Exception {
-        return client.admin().indices().prepareExists(indexName).execute().actionGet().isExists();
+        //return client.admin().indices().prepareExists(indexName).execute().actionGet().isExists();
+        //或者
+        IndicesExistsResponse response = client.admin().indices().exists(
+                new IndicesExistsRequest().indices(new String[]{indexName})).actionGet();
+        return response.isExists();
     }
 
+    /**
+     * 判断指定索引的类型(type)是否存在
+     *
+     * @param indexName 索引名称
+     * @param typeName  类型名称
+     * @return
+     * @throws Exception
+     */
     public boolean isTypeExists(String indexName, String typeName) throws Exception {
-        //return Boolean.FALSE;
+        TypesExistsResponse response = client.admin().indices().typesExists(new TypesExistsRequest(new String[]{indexName}, typeName)).actionGet();
+        return response.isExists();
     }
 
     /**
