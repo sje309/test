@@ -1,5 +1,7 @@
 package es;
 
+import org.elasticsearch.action.admin.indices.create.CreateIndexRequestBuilder;
+import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexResponse;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsRequest;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsResponse;
@@ -7,7 +9,9 @@ import org.elasticsearch.action.admin.indices.exists.types.TypesExistsRequest;
 import org.elasticsearch.action.admin.indices.exists.types.TypesExistsResponse;
 import org.elasticsearch.action.bulk.BulkRequestBuilder;
 import org.elasticsearch.action.delete.DeleteRequest;
+import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.index.IndexRequestBuilder;
+import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.client.Client;
@@ -32,6 +36,7 @@ import java.net.UnknownHostException;
  * @Description: ES工具类，包括初始化、创建索引、更新索引、删除索引、查询索引
  * 参考：https://blog.csdn.net/lom9357bye/article/details/52841711
  * https://blog.csdn.net/u011781521/article/details/77848489
+ * https://www.cnblogs.com/bigfanofcpp/archive/2013/01/22/2871852.html
  */
 public class ElasticsearchUtils {
     private Client client;
@@ -45,6 +50,8 @@ public class ElasticsearchUtils {
         //        .put("node.client", true)
         //        .put("client.transport.sniff", true)
         //        .build();
+
+        //单节点
         Settings settings = Settings.builder()
                 .put("cluster.name", clusterName)
                 .put("client.transport.sniff", true).build();
@@ -59,6 +66,19 @@ public class ElasticsearchUtils {
     }
 
     /**
+     * 关闭client连接
+     */
+    public void clientClose() {
+        if (null != client) {
+            try {
+                client.close();
+            } catch (Exception ex) {
+                logger.error("关闭client错误: " + ex.getMessage());
+            }
+        }
+    }
+
+    /**
      * 创建索引
      *
      * @param indexName 索引名称，相当于数据库名称
@@ -69,15 +89,36 @@ public class ElasticsearchUtils {
      */
     public void createIndex(String indexName, String typeName,
                             String id, String jsonData) throws Exception {
-        IndexRequestBuilder requestBuilder = client.prepareIndex(indexName, typeName, id);
-        if (null != requestBuilder) {
-            requestBuilder.setSource(jsonData).execute().actionGet();       //创建索引
-            if (requestBuilder.execute().get().getVersion() != 0) {
-                logger.info("创建索引成功,版本号为: " + requestBuilder.execute().get().getVersion());
-            } else {
-                logger.info("创建索引失败!");
-            }
-        }
+        //IndexRequestBuilder requestBuilder = client.prepareIndex(indexName, typeName, id);
+        //if (null != requestBuilder) {
+        //    requestBuilder.setSource(jsonData).execute().actionGet();       //创建索引
+        //    if (requestBuilder.execute().get().getVersion() != 0) {
+        //        logger.info("创建索引成功,版本号为: " + requestBuilder.execute().get().getVersion());
+        //    } else {
+        //        logger.info("创建索引失败!");
+        //    }
+        //}
+
+        IndexRequestBuilder requestBuilder = client.prepareIndex(indexName, typeName, id)
+                .setCreate(true)
+                .setSource(jsonData);
+        IndexResponse response = requestBuilder.execute().actionGet();
+        logger.info("response.status: " + response.status().name());
+
+    }
+
+    /**
+     * 创建一个空索引
+     *
+     * @param indexName 索引名称
+     * @return
+     * @throws Exception
+     */
+    public boolean createBlankIndex(String indexName) throws Exception {
+        CreateIndexRequestBuilder builder = client.admin().indices()
+                .prepareCreate(indexName);
+        CreateIndexResponse response = builder.execute().actionGet();
+        return response.isAcknowledged();
     }
 
     /**
@@ -92,6 +133,7 @@ public class ElasticsearchUtils {
         //或者
         IndicesExistsResponse response = client.admin().indices().exists(
                 new IndicesExistsRequest().indices(new String[]{indexName})).actionGet();
+
         return response.isExists();
     }
 
@@ -105,26 +147,9 @@ public class ElasticsearchUtils {
      */
     public boolean isTypeExists(String indexName, String typeName) throws Exception {
         TypesExistsResponse response = client.admin().indices().typesExists(new TypesExistsRequest(new String[]{indexName}, typeName)).actionGet();
+
         return response.isExists();
     }
-
-    /**
-     * 执行查询
-     *
-     * @param indexName    索引名称
-     * @param typeName     索引类型
-     * @param queryBuilder 查询条件
-     * @return
-     * @throws Exception
-     */
-    //public SearchResponse searchResponse(String indexName, String typeName,
-    //                                     QueryBuilder queryBuilder) throws Exception {
-    //    SearchResponse searchResponse = client.prepareSearch(indexName)
-    //            .setTypes(typeName)
-    //            .setQuery(queryBuilder)
-    //            .execute().actionGet();     //执行查询
-    //    return searchResponse;
-    //}
 
     /**
      * 执行查询
@@ -140,6 +165,7 @@ public class ElasticsearchUtils {
                 .setTypes(typeName)
                 .setQuery(queryBuilder)
                 .execute().actionGet();
+
         return searchResponse;
     }
 
@@ -150,7 +176,7 @@ public class ElasticsearchUtils {
                 .setQuery(queryBuilder)
                 .setFetchSource(fields, null)
                 .execute().actionGet();
-        client.close();
+
         return searchResponse;
     }
 
@@ -174,6 +200,7 @@ public class ElasticsearchUtils {
                 updateRequest.type(typeName);       //设置索引类型
                 updateRequest.doc(jsonData);
                 client.update(updateRequest).actionGet();   //执行更新
+
                 logger.info("更新type为student数据成功");
             } else {
                 String errInfo = "id:" + id + "不存在!";
@@ -205,7 +232,8 @@ public class ElasticsearchUtils {
         deleteRequest.id(id);
         deleteRequest.type(typeName);
         deleteRequest.index(indexName);
-        client.delete(deleteRequest).actionGet();       //执行删除
+        DeleteResponse response = client.delete(deleteRequest).actionGet();       //执行删除
+
     }
 
     /**
@@ -221,6 +249,7 @@ public class ElasticsearchUtils {
                 .get();
 
         long deleted = response.getDeleted();
+
         if (0 != deleted) {
             logger.info("总共删除: " + deleted + " 条数据！");
         } else {
@@ -256,6 +285,7 @@ public class ElasticsearchUtils {
             count++;
         }
         //bulkRequestBuilder.execute().actionGet();
+
         logger.info("导入成功，总共导入" + count + "条数据!");
     }
 
@@ -300,6 +330,7 @@ public class ElasticsearchUtils {
                 logger.info("总共导出: " + response1.getHits().totalHits + " 条数据");
                 bfw.close();
                 fw.close();
+
             }
         } else {
             logger.info("查询结果返回0条数据");
@@ -319,6 +350,7 @@ public class ElasticsearchUtils {
             //存在，则删除
             DeleteIndexResponse deleteIndexResponse = client.admin().indices().prepareDelete(indexName)
                     .execute().actionGet();
+
             if (deleteIndexResponse.isAcknowledged()) {
                 System.out.println("删除索引:" + indexName + "成功");
             } else {

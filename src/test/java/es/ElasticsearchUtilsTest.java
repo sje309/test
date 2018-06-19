@@ -7,6 +7,8 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.junit.Test;
 
+import java.util.UUID;
+
 /**
  * @Author: shuyizhi
  * @Date: 2018/6/7 10:55
@@ -15,21 +17,23 @@ import org.junit.Test;
 public class ElasticsearchUtilsTest {
     @Test
     public void Test() {
-        ElasticsearchUtils elasticsearchUtils = new ElasticsearchUtils("elasticsearch", "127.0.0.1");
+        ElasticsearchUtils elasticsearchUtils = new ElasticsearchUtils("elasticsearch", "192.168.155.221");
         String indexName = "school";
         String typeName = "student";
 
-
         // region创建索引
-        //for (int i = 0; i < 50; i++) {
-        //    String id = UUID.randomUUID().toString();
-        //    String jsonData = "{\"account_number\":30,\"balance\":50000,\"firstname\":\"song\",\"lastname\":\"li\",\"age\":35,\"gender\":\"M\",\"address\":\"安徽省巢湖市巢湖学院\",\"employer\":\"songli\",\"email\":\"songli@microsoft.com\",\"city\":\"巢湖\",\"state\":\"安徽\"}";
-        //    try {
-        //        elasticsearchUtils.createIndex(indexName, typeName, id, jsonData);
-        //    } catch (Exception e) {
-        //        e.printStackTrace();
-        //    }
-        //}
+
+        try {
+            for (int i = 0; i < 50; i++) {
+                String id = UUID.randomUUID().toString();
+                String jsonData = "{\"account_number\":30,\"balance\":50000,\"firstname\":\"song\",\"lastname\":\"li\",\"age\":35,\"gender\":\"M\",\"address\":\"安徽省巢湖市巢湖学院\",\"employer\":\"songli\",\"email\":\"songli@microsoft.com\",\"city\":\"巢湖\",\"state\":\"安徽\"}";
+                elasticsearchUtils.createIndex(indexName, typeName, id, jsonData);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            elasticsearchUtils.clientClose();  //显示关闭一下，要不ES日志会显示“java.io.IOException: 连接被对方重设”异常信息
+        }
 
         //endregion
 
@@ -100,11 +104,11 @@ public class ElasticsearchUtilsTest {
         //endregion
 
         //region 删除指定的索引
-        try {
-            elasticsearchUtils.deleteAllIndex("megacorp");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        //try {
+        //    elasticsearchUtils.deleteAllIndex("megacorp");
+        //} catch (Exception e) {
+        //    e.printStackTrace();
+        //}
         //endregion
 
     }
@@ -129,5 +133,31 @@ public class ElasticsearchUtilsTest {
         } finally {
 
         }
+    }
+
+    @Test
+    public void isExistsTest() {
+        ElasticsearchUtils elasticsearchUtils = new ElasticsearchUtils("elasticsearch", "192.168.155.221");
+        String indexName = "bank";
+        String typeName = "account";
+        try {
+            boolean isIndexExists = elasticsearchUtils.isIndexExists(indexName);
+            System.out.println("索引名称: " + indexName + "是否存在: " + isIndexExists);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void createBlankIndexTest() {
+        ElasticsearchUtils elasticsearchUtils = new ElasticsearchUtils("elasticsearch", "192.168.155.221");
+        String indexName = "bank1";
+        try {
+            boolean res = elasticsearchUtils.createBlankIndex(indexName);
+            System.out.println("创建索引: " + indexName + ", 是否成功: " + res);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
