@@ -1,0 +1,5 @@
+ES参考
+1、专栏：深入详解ElasticSearch
+https://blog.csdn.net/column/details/deep-elasticsearch.html
+2、入门级干货
+https://www.cnblogs.com/xing901022/p/4967796.html
