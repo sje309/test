@@ -104,7 +104,6 @@ public class ElasticsearchUtils {
                 .setSource(jsonData);
         IndexResponse response = requestBuilder.execute().actionGet();
         logger.info("response.status: " + response.status().name());
-
     }
 
     /**
@@ -146,8 +145,9 @@ public class ElasticsearchUtils {
      * @throws Exception
      */
     public boolean isTypeExists(String indexName, String typeName) throws Exception {
-        TypesExistsResponse response = client.admin().indices().typesExists(new TypesExistsRequest(new String[]{indexName}, typeName)).actionGet();
-
+        TypesExistsResponse response = client.admin().indices()
+                .typesExists(new TypesExistsRequest(new String[]{indexName}, typeName))
+                .actionGet();
         return response.isExists();
     }
 
@@ -200,7 +200,6 @@ public class ElasticsearchUtils {
                 updateRequest.type(typeName);       //设置索引类型
                 updateRequest.doc(jsonData);
                 client.update(updateRequest).actionGet();   //执行更新
-
                 logger.info("更新type为student数据成功");
             } else {
                 String errInfo = "id:" + id + "不存在!";
