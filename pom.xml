@@ -23,6 +23,7 @@
     <modules>
         <module>activeMQ</module>
         <module>nio</module>
+        <module>rabbitMQ</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
