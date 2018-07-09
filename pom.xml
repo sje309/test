@@ -24,6 +24,7 @@
         <module>activeMQ</module>
         <module>nio</module>
         <module>rabbitMQ</module>
+        <module>mlthread</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->

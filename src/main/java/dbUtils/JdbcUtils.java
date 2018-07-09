@@ -22,6 +22,7 @@ public class JdbcUtils {
         try {
             Properties prop = new Properties();
             InputStream inputStream = JdbcUtils.class.getClassLoader().getResourceAsStream("dbconfig.properties");
+
             prop.load(inputStream);
             BasicDataSourceFactory factory = new BasicDataSourceFactory();
             ds = factory.createDataSource(prop);
@@ -37,6 +38,7 @@ public class JdbcUtils {
     }
 
     public static Connection getConnection() throws SQLException {
+        //return ds.getConnection();
         return ds.getConnection();
     }
 }
