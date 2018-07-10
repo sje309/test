@@ -7,16 +7,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="activeMQ" />
+        <module name="aop" />
         <module name="mlthread" />
         <module name="nio" />
+        <module name="proxy" />
         <module name="rabbitMQ" />
         <module name="redis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="activeMQ" target="1.8" />
+      <module name="aop" target="1.8" />
       <module name="mlthread" target="1.8" />
       <module name="nio" target="1.8" />
+      <module name="proxy" target="1.8" />
       <module name="rabbitMQ" target="1.8" />
       <module name="redis" target="1.5" />
       <module name="test" target="1.8" />
