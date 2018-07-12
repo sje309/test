@@ -1,2 +1,8 @@
 1、Spring中Aop编程
 http://www.cnblogs.com/cenyu/p/6291831.html
+2、一分钟学会Spring注解之@Scope注解
+http://blog.51cto.com/4247649/2118351
+3、Spring学习笔记---Aop编程
+https://blog.csdn.net/a1610770854/article/details/51907903
+4、死磕Spring AOP系列
+http://blog.51cto.com/dba10g/1785667

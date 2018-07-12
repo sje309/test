@@ -1,0 +1,6 @@
+1、Spring配置文件中特殊字符的规定
+https://www.cnblogs.com/garinzhang/p/spring_Special_char_encode.html
+2、Spring JDBC例子
+https://www.yiibai.com/spring/spring_jdbc_example.html
+3、Spring中的事务管理
+http://www.cnblogs.com/cenyu/p/6295782.html

@@ -47,6 +47,8 @@ public class App {
     @Around("pointCut_()")
     public void around(ProceedingJoinPoint joinPoint)
             throws Throwable {
-
+        System.out.println("环绕前....");
+        joinPoint.proceed();        //执行目标方法
+        System.out.println("环绕后...");
     }
 }

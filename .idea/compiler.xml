@@ -13,6 +13,7 @@
         <module name="proxy" />
         <module name="rabbitMQ" />
         <module name="redis" />
+        <module name="springJDBC" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -23,6 +24,7 @@
       <module name="proxy" target="1.8" />
       <module name="rabbitMQ" target="1.8" />
       <module name="redis" target="1.5" />
+      <module name="springJDBC" target="1.8" />
       <module name="test" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -915,88 +915,79 @@
     <table id="230" parent="3" name="department">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="231" parent="3" name="employee">
+    <table id="231" parent="3" name="dept">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="232" parent="3" name="users">
+    <table id="232" parent="3" name="employee">
       <Engine>InnoDB</Engine>
     </table>
-    <column id="233" parent="229" name="id">
+    <table id="233" parent="3" name="hibernate_sequence">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="234" parent="3" name="jpa_persons">
+      <Engine>MyISAM</Engine>
+    </table>
+    <table id="235" parent="3" name="student">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="236" parent="3" name="t_user">
+      <Engine>MyISAM</Engine>
+    </table>
+    <table id="237" parent="3" name="usermodel">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="238" parent="3" name="users">
+      <Engine>InnoDB</Engine>
+    </table>
+    <column id="239" parent="229" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="234" parent="229" name="name">
+    <column id="240" parent="229" name="name">
       <Position>2</Position>
       <DataType>varchar(40)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="229" name="money">
+    <column id="241" parent="229" name="money">
       <Position>3</Position>
       <DataType>float|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="236" parent="229" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="237" parent="230" name="id">
+    <column id="242" parent="230" name="id">
       <Position>1</Position>
       <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="238" parent="230" name="name">
+    <column id="243" parent="230" name="name">
       <Position>2</Position>
       <DataType>varchar(40)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="239" parent="230" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="240" parent="231" name="id">
-      <Position>1</Position>
-      <DataType>varchar(40)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="241" parent="231" name="name">
-      <Position>2</Position>
-      <DataType>varchar(40)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="242" parent="231" name="salary">
-      <Position>3</Position>
-      <DataType>double|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="243" parent="231" name="department_id">
-      <Position>4</Position>
-      <DataType>varchar(40)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="244" parent="231" name="department_id_FK">
-      <ColNames>department_id</ColNames>
-    </index>
-    <key id="245" parent="231" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="246" parent="231" name="department_id_FK">
-      <ColNames>department_id</ColNames>
-      <RefSchemaName>javatest</RefSchemaName>
-      <RefTableName>department</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="247" parent="232" name="id">
+    <column id="244" parent="231" name="deptId">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="245" parent="231" name="deptName">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="246" parent="231" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>deptId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="247" parent="232" name="id">
+      <Position>1</Position>
+      <DataType>varchar(40)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1005,25 +996,167 @@
       <DataType>varchar(40)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="232" name="password">
+    <column id="249" parent="232" name="salary">
       <Position>3</Position>
+      <DataType>double|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="250" parent="232" name="department_id">
+      <Position>4</Position>
       <DataType>varchar(40)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="232" name="email">
+    <column id="251" parent="233" name="next_val">
+      <Position>1</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="252" parent="234" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="253" parent="234" name="birthday">
+      <Position>2</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="254" parent="234" name="email">
+      <Position>3</Position>
+      <Comment>电子邮件地址</Comment>
+      <DataType>varchar(300)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="255" parent="234" name="name">
       <Position>4</Position>
-      <DataType>varchar(60)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="232" name="birthday">
+    <column id="256" parent="234" name="height">
       <Position>5</Position>
-      <DataType>date|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="252" parent="232" name="PRIMARY">
+    <column id="257" parent="234" name="weight">
+      <Position>6</Position>
+      <DataType>int(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="258" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
+    <column id="259" parent="235" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="260" parent="235" name="name">
+      <Position>2</Position>
+      <DataType>varchar(200)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="261" parent="235" name="age">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="262" parent="235" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="263" parent="236" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="264" parent="236" name="homeAddress">
+      <Position>2</Position>
+      <Comment>居住地址</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="265" parent="236" name="homeTel">
+      <Position>3</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="266" parent="236" name="userName">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="267" parent="236" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="268" parent="237" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="269" parent="237" name="address">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="270" parent="237" name="age">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="271" parent="237" name="firstname">
+      <Position>4</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="272" parent="237" name="lastname">
+      <Position>5</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="273" parent="238" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="274" parent="238" name="name">
+      <Position>2</Position>
+      <DataType>varchar(40)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="275" parent="238" name="password">
+      <Position>3</Position>
+      <DataType>varchar(40)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="276" parent="238" name="email">
+      <Position>4</Position>
+      <DataType>varchar(60)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="277" parent="238" name="birthday">
+      <Position>5</Position>
+      <DataType>date|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="278" parent="238" name="sex">
+      <Position>6</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
   </database-model>
 </dataSource>

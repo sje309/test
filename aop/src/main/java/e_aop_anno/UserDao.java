@@ -11,6 +11,6 @@ import org.springframework.stereotype.Component;
 public class UserDao implements IUserDao {
     @Override
     public void save() {
-        System.out.println("------------核心业务:保存!!!-------------");
+        System.out.println("------------UserDao核心业务:保存!!!-------------");
     }
 }

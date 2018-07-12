@@ -27,6 +27,7 @@
         <module>mlthread</module>
         <module>proxy</module>
         <module>aop</module>
+        <module>springJDBC</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
