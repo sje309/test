@@ -28,6 +28,8 @@
         <module>proxy</module>
         <module>aop</module>
         <module>springJDBC</module>
+        <module>springByYiiBai</module>
+        <module>webservice</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->

@@ -6,3 +6,5 @@ http://blog.51cto.com/4247649/2118351
 https://blog.csdn.net/a1610770854/article/details/51907903
 4、死磕Spring AOP系列
 http://blog.51cto.com/dba10g/1785667
+5、AOP面向切面编程
+https://www.cnblogs.com/bdpsc/p/5955494.html

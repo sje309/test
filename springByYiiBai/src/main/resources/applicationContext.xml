@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="helloBean" class="bean.HelloWorld">
+        <property name="name" value="束义志"></property>
+    </bean>
+
+    <bean id="outputHelper" class="bean.OutputHelper">
+        <property name="outputGenerator" ref="csvOutputGenerator"></property>
+    </bean>
+
+    <bean id="csvOutputGenerator" class="bean.CsvOutputGenerator"></bean>
+    <bean id="jsonOutputGenerator" class="bean.JsonOutpuGenerator"></bean>
+
+    <!--:::构造器注入:::需要指定构造器的参数类型，防止构造器有重载版本，出现结果期望不一致-->
+    <bean id="customerBean" class="bean.Customer">
+        <constructor-arg type="java.lang.String">
+            <value>yiibai</value>
+        </constructor-arg>
+        <constructor-arg type="java.lang.String">
+            <value>188</value>
+        </constructor-arg>
+        <constructor-arg type="int">
+            <value>28</value>
+        </constructor-arg>
+    </bean>
+    <!--===================内部bean配置 start ==================-->
+    <bean id="personBean" class="bean.PersonBean">
+        <property name="name" value="shuyizhi"/>
+        <property name="address" value="安徽省合肥市望江西路与创新大道交叉口"/>
+        <property name="age" value="35"/>
+    </bean>
+    <!--bean.CustomerBean必须要有一个默认的构造函数(无参的构造函数)-->
+    <bean id="customerInnerBean" class="bean.CustomerBean">
+        <property name="personBean" ref="personBean"/>
+    </bean>
+    <!--===================内部bean配置 end ==================-->
+
+    <!--================Bean属性注入方式 start ======================-->
+    <!--1、正常方式-->
+
+    <!--<bean id="fileNameGenerator" class="bean.FileNameGenerator">-->
+    <!--<property name="name">-->
+    <!--<value>shuyizhi</value>-->
+    <!--</property>-->
+    <!--<property name="type">-->
+    <!--<value>docx</value>-->
+    <!--</property>-->
+    <!--</bean>-->
+
+    <!--2、快捷方式-->
+    <!--<bean id="fileNameGenerator" class="bean.FileNameGenerator">-->
+    <!--<property name="name" value="shuyizhi"></property>-->
+    <!--<property name="type" value="docx"></property>-->
+    <!--</bean>-->
+
+    <!--3、"P"模式方式，需要引用xmlns:p=”http://www.springframework.org/schema/p"-->
+    <bean id="fileNameGenerator" class="bean.FileNameGenerator" p:name="shuyizhi" p:type="docx"></bean>
+
+    <!--=================Bean属性注入方式 end =======================-->
+    <!--1、单例::默认-->
+    <bean id="customerServiceSingleton" class="bean.CustomerService"></bean>
+    <!--2、原型-->
+    <bean id="customerServicePrototype" class="bean.CustomerService" scope="prototype"></bean>
+    <!--=================Bean作用域 end =======================-->
+
+    <!--========================Spring注入List\Map\Set\Properties  start=================================-->
+    <bean id="customerListBeans" class="bean.CustomerListBeans">
+        <!--java.util.List-->
+        <property name="lists">
+            <list>
+                <value>1</value>
+                <ref bean="personBean"></ref>
+                <bean class="bean.PersonBean">
+                    <property name="name" value="shuyizhiList"></property>
+                    <property name="address" value="安徽省合肥市高新区望江西路与创新大道交叉口"></property>
+                    <property name="age" value="35"></property>
+                </bean>
+            </list>
+        </property>
+        <!--java.util.Set-->
+        <property name="sets">
+            <set>
+                <value>1</value>
+                <ref bean="personBean"></ref>
+                <bean class="bean.PersonBean">
+                    <property name="name" value="shuyizhiSet"></property>
+                    <property name="address" value="安徽省合肥市高新区望江西路与创新大道交叉口"></property>
+                    <property name="age" value="35"></property>
+                </bean>
+            </set>
+        </property>
+        <!--java.util.Map-->
+        <property name="maps">
+            <map>
+                <entry key="Key1" value="Value1"></entry>
+                <entry key="Key2" value="Value2"></entry>
+                <entry key="Key3">
+                    <bean class="bean.PersonBean">
+                        <property name="name" value="shuyizhiMap"></property>
+                        <property name="address" value="安徽省合肥市高新区望江西路与创新大道交叉口"></property>
+                        <property name="age" value="35"></property>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+        <!--java.util.Properties-->
+        <property name="properties">
+            <props>
+                <prop key="shuyizhi">shuyizhi@live.cn</prop>
+                <prop key="admin">admin@qq.com</prop>
+            </props>
+        </property>
+    </bean>
+    <!--========================Spring注入List\Map\Set\Properties  end  =================================-->
+
+    <!--Spring Bean配置文件中创建一个具体的集合类(ArrayList和LinkedList) start-->
+    <bean id="customerListFactory" class="bean.CustomerListFactoryBean">
+        <property name="lists">
+            <bean class="org.springframework.beans.factory.config.ListFactoryBean">
+                <property name="targetListClass">
+                    <!--指定具体的类型-->
+                    <value>java.util.ArrayList</value>
+                </property>
+                <property name="sourceList">
+                    <list>
+                        <value>one</value>
+                        <value>2</value>
+                        <value>three</value>
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <!--util模式-->
+    <bean id="customerListFactoryBeanByUtil" class="bean.CustomerListFactoryBean">
+        <property name="lists">
+            <util:list list-class="java.util.ArrayList">
+                <value>合肥</value>
+                <value>南京</value>
+                <value>天津</value>
+                <value>北京</value>
+            </util:list>
+        </property>
+    </bean>
+    <!--Spring Bean配置文件中创建一个具体的集合类(ArrayList和LinkedList) end-->
+
+    <!--====================Spring 依赖检查 start (目录:springCheck)============================-->
+    <!--1、none依赖检查:::默认为none检查，没有依赖检查将执行-->
+    <bean id="customerBeanCheck" class="springCheck.Customer">
+        <property name="action" value="buy"></property>
+    </bean>
+    <bean id="personBeanCheck" class="springCheck.Person">
+        <property name="name" value="shuyizhi"></property>
+        <property name="address" value="安徽省合肥市望江西路与创新大道交叉口"></property>
+        <property name="age" value="35"></property>
+    </bean>
+    <!--2、simple依赖检查 Spring3.X以后版本放弃使用 用@Required替代-->
+    <!--<bean id="customerBeanCheckBySimple" class="springCheck.Customer" dependency-check="simple"></bean>-->
+    <bean id="customerBeanCheckBySimple" class="springCheck.Customer">
+
+    </bean>
+    <bean id="personBeanCheckBySimple" class="springCheck.Person">
+        <property name="name" value="nameCheckByRequired"></property>
+        <property name="address" value="安徽大学公安学院"></property>
+        <property name="age" value="19"></property>
+    </bean>
+    <!--====================Spring 依赖检查 end (目录:springCheck)============================-->
+
+    <!--init-method和destroy-method在bean配置文件属性用于在bean初始化和销毁某些动作时候，替代InitalizingBean和DisposableBean接口-->
+    <bean id="customerService" class="service.CustomerService" init-method="initIt" destroy-method="cleanUp">
+        <property name="message" value="I'm property message"></property>
+    </bean>
+
+    <!--=============================SpringEL start ==========================================-->
+    <bean id="itemBeanEl" class="spEL.Item">
+        <property name="name" value="shuyizhi"></property>
+        <property name="qty" value="35"></property>
+    </bean>
+    <bean id="customerBeanEl" class="spEL.Customer">
+        <property name="item" value="#{itemBeanEl}"></property>
+        <property name="itemName" value="#{itemBeanEl.name}"></property>
+    </bean>
+    <!--=============================SpringEL end ==========================================-->
+    <!--开启spring组件扫描::需要指定要扫描的包-->
+    <context:component-scan base-package="spEL"></context:component-scan>
+
+    <!--springEL表达式配置Start-->
+    <bean id="addressBeanXml" class="spEL.AddressByXml">
+        <property name="country" value="中国"></property>
+        <property name="postcode" value="231500"></property>
+        <property name="street" value="GaoDeng,QiongShang"></property>
+    </bean>
+    <bean id="customerBeanXml" class="spEL.CustomerByXml">
+        <property name="country" value="#{addressBeanXml.country}"></property>
+        <property name="address" value="#{addressBeanXml}"></property>
+        <property name="fullAddress" value="#{addressBeanXml.getFullAddress('shuyizhi')}"></property>
+    </bean>
+    <!--springEL表达式配置End-->
+
+    <!--SpringEL表达时候集合部分 start -->
+    <bean id="elCollectionByXml" class="spEL.ELCollectionsByXml">
+        <property name="list" value="#{elMapByXml.list[1]}"></property>
+        <property name="mapA" value="#{elMapByXml.map['mapA']}"></property>
+    </bean>
+    <bean id="elMapByXml" class="spEL.ElMapsByXml">
+        <property name="list">
+            <util:list list-class="java.util.ArrayList">
+                <value>List0</value>
+                <value>List1</value>
+                <value>List2</value>
+            </util:list>
+        </property>
+        <property name="map">
+            <util:map map-class="java.util.HashMap">
+                <entry key="mapA" value="This is MapA"></entry>
+                <entry key="mapB" value="This is MapB"></entry>
+                <entry key="mapC" value="This is MapC"></entry>
+            </util:map>
+        </property>
+    </bean>
+    <!--SpringEL表达时候集合部分 end -->
+
+    <!--====================AutoWired Start=========================-->
+    <bean id="customerAutoWired" class="autowired.Customer">
+        <property name="action" value="buy"></property>
+        <property name="type" value="1"></property>
+        <!--若在setPerson方法中设置@AutoWried注解后，可以注释xml中配置部分-->
+        <!--若在person属性上设置@AutoWried注解后，可以注释xml中配置部分-->
+        <!--若在构造函数上设置@AutoWried注解后，可以注释xml中配置部分-->
+        <!--<property name="person" ref="personAutoWired"></property>-->
+    </bean>
+    <bean id="personAutoWired" class="autowired.Person">
+        <property name="name" value="shuyizhi"></property>
+        <property name="age" value="35"></property>
+        <property name="address" value="安徽省合肥市高新区中国科学技术大学先进技术院"></property>
+    </bean>
+    <!--====================AutoWired End=========================-->
+    <!--Qualifier注解 控制bean应该在字段上自动装配 start -->
+    <bean id="personAutoWired1" class="autowired.Person">
+        <property name="name" value="shuyizhi"></property>
+        <property name="age" value="35"></property>
+        <property name="address" value="安徽省合肥市高新区中国科学技术大学先进技术院"></property>
+    </bean>
+    <bean id="personAutoWired2" class="autowired.Person">
+        <property name="name" value="shuyizhi"></property>
+        <property name="age" value="35"></property>
+        <property name="address" value="安徽省合肥市高新区中国科学技术大学先进技术研究院未来中心"></property>
+    </bean>
+
+    <!--=============================aop配置 start ===========================-->
+    <bean id="customerServcieAop" class="aop.CustomerService">
+        <property name="name" value="YiiBaii Mook Kim"></property>
+        <property name="url" value="http://www.yiibai.com"></property>
+    </bean>
+    <!--返回前通知-->
+    <bean id="hijackBeforeMethodBean" class="aop.HijackBeforeMethod"></bean>
+    <!--返回后通知-->
+    <bean id="hijackAfterMethodBean" class="aop.HijackAfterMethod"></bean>
+    <!--异常通知-->
+    <bean id="hijackThrowExceptionBean" class="aop.HijackThrowException"></bean>
+    <!--环绕通知-->
+    <bean id="hijackAroundMethodBean" class="aop.HijackAroundMethod"></bean>
+
+    <bean id="customerServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="customerServcieAop"></property>
+        <property name="interceptorNames">
+            <list>
+                <!--<value>hijackBeforeMethodBean</value>-->
+                <!--<value>hijackAfterMethodBean</value>-->
+                <!--<value>hijackThrowExceptionBean</value>-->
+                <value>hijackAroundMethodBean</value>
+            </list>
+        </property>
+    </bean>
+    <!--=============================aop配置 end  ===========================-->
+
+    <!--aspectJ start -->
+    <!--开启aspectJ-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+    <bean id="customerBo" class="aspectJ.CustomerBoImpl"></bean>
+    <!--Aspect-->
+    <bean id="logAspect" class="aspectJ.LoggingAspect"></bean>
+    <!--aspectJ end -->
+</beans>

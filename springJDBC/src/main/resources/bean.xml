@@ -52,4 +52,14 @@
         <aop:pointcut id="pt" expression="execution(* DeptService.save(..))"></aop:pointcut>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pt"></aop:advisor>
     </aop:config>
+
+    <!--配置helloword bean-->
+    <bean id="helloBean" class="model.HelloWorld">
+        <property name="name" value="shuyizhi"></property>
+    </bean>
+    <bean id="outputHelper" class="model.OutputHelper">
+        <property name="outputGenerator" ref="jsonOutputGenerator"></property>
+    </bean>
+    <bean id="csvOutputGenerator" class="model.CsvOutputGenerator"></bean>
+    <bean id="jsonOutputGenerator" class="model.JsonOutputGenerator"></bean>
 </beans>
