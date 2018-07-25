@@ -15,7 +15,7 @@
         <module name="redis" />
         <module name="springByYiiBai" />
         <module name="springJDBC" />
-        <module name="webservice" />
+        <module name="xml" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -30,6 +30,7 @@
       <module name="springJDBC" target="1.8" />
       <module name="test" target="1.8" />
       <module name="webservice" target="1.8" />
+      <module name="xml" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

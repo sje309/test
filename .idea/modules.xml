@@ -12,7 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/springByYiiBai/springByYiiBai.iml" filepath="$PROJECT_DIR$/springByYiiBai/springByYiiBai.iml" />
       <module fileurl="file://$PROJECT_DIR$/springJDBC/springJDBC.iml" filepath="$PROJECT_DIR$/springJDBC/springJDBC.iml" />
       <module fileurl="file://$PROJECT_DIR$/test.iml" filepath="$PROJECT_DIR$/test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/webservice/webservice.iml" filepath="$PROJECT_DIR$/webservice/webservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xml/xml.iml" filepath="$PROJECT_DIR$/xml/xml.iml" />
     </modules>
   </component>
 </project>
