@@ -8,12 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="activeMQ" />
         <module name="aop" />
+        <module name="guava" />
         <module name="mlthread" />
         <module name="nio" />
         <module name="proxy" />
         <module name="rabbitMQ" />
         <module name="redis" />
         <module name="springByYiiBai" />
+        <module name="springIOC" />
         <module name="springJDBC" />
         <module name="xml" />
       </profile>
@@ -21,12 +23,14 @@
     <bytecodeTargetLevel>
       <module name="activeMQ" target="1.8" />
       <module name="aop" target="1.8" />
+      <module name="guava" target="1.8" />
       <module name="mlthread" target="1.8" />
       <module name="nio" target="1.8" />
       <module name="proxy" target="1.8" />
       <module name="rabbitMQ" target="1.8" />
       <module name="redis" target="1.5" />
       <module name="springByYiiBai" target="1.8" />
+      <module name="springIOC" target="1.8" />
       <module name="springJDBC" target="1.8" />
       <module name="test" target="1.8" />
       <module name="webservice" target="1.8" />

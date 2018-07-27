@@ -4,12 +4,14 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/activeMQ/activeMQ.iml" filepath="$PROJECT_DIR$/activeMQ/activeMQ.iml" />
       <module fileurl="file://$PROJECT_DIR$/aop/aop.iml" filepath="$PROJECT_DIR$/aop/aop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/guava/guava.iml" filepath="$PROJECT_DIR$/guava/guava.iml" />
       <module fileurl="file://$PROJECT_DIR$/mlthread/mlthread.iml" filepath="$PROJECT_DIR$/mlthread/mlthread.iml" />
       <module fileurl="file://$PROJECT_DIR$/nio/nio.iml" filepath="$PROJECT_DIR$/nio/nio.iml" />
       <module fileurl="file://$PROJECT_DIR$/proxy/proxy.iml" filepath="$PROJECT_DIR$/proxy/proxy.iml" />
       <module fileurl="file://$PROJECT_DIR$/rabbitMQ/rabbitMQ.iml" filepath="$PROJECT_DIR$/rabbitMQ/rabbitMQ.iml" />
       <module fileurl="file://$PROJECT_DIR$/redis/redis.iml" filepath="$PROJECT_DIR$/redis/redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/springByYiiBai/springByYiiBai.iml" filepath="$PROJECT_DIR$/springByYiiBai/springByYiiBai.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springIOC/springIOC.iml" filepath="$PROJECT_DIR$/springIOC/springIOC.iml" />
       <module fileurl="file://$PROJECT_DIR$/springJDBC/springJDBC.iml" filepath="$PROJECT_DIR$/springJDBC/springJDBC.iml" />
       <module fileurl="file://$PROJECT_DIR$/test.iml" filepath="$PROJECT_DIR$/test.iml" />
       <module fileurl="file://$PROJECT_DIR$/xml/xml.iml" filepath="$PROJECT_DIR$/xml/xml.iml" />
