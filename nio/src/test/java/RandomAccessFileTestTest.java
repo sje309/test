@@ -35,4 +35,28 @@ public class RandomAccessFileTestTest {
             e.printStackTrace();
         }
     }
+
+    /** 测试以为运算 */
+    @Test
+    public void testOperator() {
+        int number = 10;
+        // printInfo(number);
+
+        number = number << 8;
+        // printInfo(number);
+        System.out.println(number);
+
+        number = number >> 1;
+        System.out.println(number);
+        // printInfo(number);
+    }
+
+    /**
+     * 输出Integer二进制表示
+     *
+     * @param num
+     */
+    private static void printInfo(int num) {
+        System.out.println(Integer.toBinaryString(num));
+    }
 }
