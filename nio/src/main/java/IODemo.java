@@ -549,6 +549,25 @@ public class IODemo {
         }
     }
 
+    public static void wirterFileByFiles(String filePath, List<String> list) {
+        if (StringUtils.isEmpty(filePath) || null == list || list.size() == 0) {
+            try {
+                throw new Exception("参数错误");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        /** 如果文件不存在，创建文件 */
+        File file = new File(filePath);
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     /**
      * 使用ApacheCommonsIO写入文件(Apache Commons IO 方式写入文件)
      *
