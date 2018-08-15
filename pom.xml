@@ -37,6 +37,8 @@
         <module>xml</module>
         <module>guava</module>
         <module>springIOC</module>
+        <module>mina</module>
+        <module>design</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
