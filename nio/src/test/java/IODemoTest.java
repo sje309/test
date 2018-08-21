@@ -1,6 +1,8 @@
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,5 +139,33 @@ public class IODemoTest {
         }
         System.out.println(StringUtils.center("wirteStringToFile", 30, "="));
         System.out.println("耗时: " + (System.currentTimeMillis() - start) + " ms");
+    }
+
+    @Test
+    public void testScan() {
+        try {
+            scanPort();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 测试扫描端口
+     *
+     * @throws IOException
+     */
+    public static void scanPort() throws IOException {
+        Socket socket = new Socket("127.0.0.1", 80);
+        System.out.println("80");
+        socket.close();
+
+        socket = new Socket("127.0.0.1", 8161);
+        System.out.println("8161");
+        socket.close();
+
+        socket = new Socket("127.0.0.1", 3306);
+        System.out.println("3306");
+        socket.close();
     }
 }
