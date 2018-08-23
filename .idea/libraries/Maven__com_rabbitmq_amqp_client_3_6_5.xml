@@ -8,6 +8,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/com/rabbitmq/amqp-client/3.6.5/amqp-client-3.6.5-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/amqp-client-3.6.5-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
