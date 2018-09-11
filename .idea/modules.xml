@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/guava/guava.iml" filepath="$PROJECT_DIR$/guava/guava.iml" />
       <module fileurl="file://$PROJECT_DIR$/mina/mina.iml" filepath="$PROJECT_DIR$/mina/mina.iml" />
       <module fileurl="file://$PROJECT_DIR$/mlthread/mlthread.iml" filepath="$PROJECT_DIR$/mlthread/mlthread.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netty/netty.iml" filepath="$PROJECT_DIR$/netty/netty.iml" />
       <module fileurl="file://$PROJECT_DIR$/nio/nio.iml" filepath="$PROJECT_DIR$/nio/nio.iml" />
       <module fileurl="file://$PROJECT_DIR$/proxy/proxy.iml" filepath="$PROJECT_DIR$/proxy/proxy.iml" />
       <module fileurl="file://$PROJECT_DIR$/rabbitMQ/rabbitMQ.iml" filepath="$PROJECT_DIR$/rabbitMQ/rabbitMQ.iml" />

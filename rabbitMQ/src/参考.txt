@@ -4,3 +4,5 @@ RabbitMQ与AMQP协议详解
 https://www.cnblogs.com/frankyou/p/5283539.html
 AMQP 0-9-1模型简介（官网直译）
 https://www.cnblogs.com/xiaochengzi/p/6895126.html
+WCF--随笔分类
+https://www.cnblogs.com/LipeiNet/category/700610.html

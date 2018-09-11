@@ -48,7 +48,6 @@ public class HeaderConsumer {
             Map<String, Object> consumerHeaders = delivery.getProperties().getHeaders();
             for (String key : consumerHeaders.keySet()) {
                 System.out.println("key: " + key + "===>value: " + consumerHeaders.get(key));
-                System.out.println("key: " + key + "===>value: " + consumerHeaders.get(key));
             }
 
             System.out.println("接受到的消息: " + message);
