@@ -40,6 +40,7 @@
         <module>mina</module>
         <module>design</module>
         <module>netty</module>
+        <module>RPC</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
