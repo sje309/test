@@ -34,4 +34,11 @@ public class Test {
         Date date2 = new Date();
         System.out.println("------------程序运行结束---------,程序运行时间【" + (date2.getTime() - date1.getTime()) + "毫秒】");
     }
+
+    /**
+     * 获取当前线程的名称
+     */
+    public static void getCurrentThreadName(){
+        System.out.println(Thread.currentThread().getName());
+    }
 }

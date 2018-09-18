@@ -36,4 +36,8 @@ public class HelloServer {
             e.printStackTrace();
         }
     }
+    public static void main(String[] args){
+        HelloServer server=new HelloServer();
+        server.startServer();
+    }
 }
