@@ -10,11 +10,7 @@ import org.apache.thrift.transport.TTransportException;
 import thrift.helloWorld.HelloWorldService;
 import thrift.helloWorld.User;
 
-/**
- * @Author: shuyizhi
- * @Date: 2018-09-18 22:56
- * @Description:
- */
+/** @Author: shuyizhi @Date: 2018-09-18 22:56 @Description: */
 public class HelloClient {
     public static final String SERVER_IP = "localhost";
     public static final int SERVER_PORT = 8090;
@@ -38,5 +34,13 @@ public class HelloClient {
                 tTransport.close();
             }
         }
+    }
+
+    public static void main(String[] args) {
+        HelloClient client = new HelloClient();
+        User user = new User();
+        user.setUsername("束义志");
+        user.setAge(30);
+        client.startClient(user);
     }
 }
