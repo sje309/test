@@ -1,0 +1,4 @@
+1、深入浅出设计模式C#
+https://www.cnblogs.com/Bobby0322/p/4182546.html
+2、Java设计模式
+https://www.cnblogs.com/kangsir/p/6653233.html
