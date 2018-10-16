@@ -41,6 +41,7 @@
         <module>design</module>
         <module>netty</module>
         <module>RPC</module>
+        <module>jsoup</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
