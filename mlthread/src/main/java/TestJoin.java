@@ -50,4 +50,17 @@ public class TestJoin {
             i++;
         }
     }
+
+    private static void printNumber2(String threadName) {
+        int i = 0;
+        while (i < 3) {
+            try {
+                Thread.sleep(1000 * 2);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            System.out.println(threadName + " print: " + i);
+            i++;
+        }
+    }
 }
