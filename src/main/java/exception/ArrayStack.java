@@ -1,5 +1,7 @@
 package exception;
 
+import java.util.Arrays;
+
 public class ArrayStack {
     private Object[] elementData;
     private int top;
@@ -25,6 +27,10 @@ public class ArrayStack {
             }
             this.size = newCapacity;
             int[] newArray = new int[size];
+            elementData = Arrays.copyOf(elementData, this.size);
+            return true;
+        } else {
+            return false;
         }
     }
 }
