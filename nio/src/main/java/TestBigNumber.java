@@ -3,7 +3,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigInteger;
 
-/** @Author: shuyizhi @Date: 2018-08-03 15:49 @Description:测试有关Java大数运算 */
+/**
+ * @Author: shuyizhi @Date: 2018-08-03 15:49 @Description:测试有关Java大数运算
+ */
 public class TestBigNumber {
     public static void main(String[] args) {
         /*  BigInteger b1 = new BigInteger("123456789");

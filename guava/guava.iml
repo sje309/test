@@ -113,5 +113,8 @@
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-security:9.2.15.v20160210" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-continuation:9.2.15.v20160210" level="project" />
     <orderEntry type="library" name="Maven: org.apache.axis:axis:1.4" level="project" />
+    <orderEntry type="library" name="Maven: jxbrowser:jxbrowser:6.1.1" level="project" />
+    <orderEntry type="library" name="Maven: jxbrowser:jxbrowser-win:6.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.jetbrains:annotations:17.0.0" level="project" />
   </component>
 </module>

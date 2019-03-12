@@ -8,11 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
 import java.util.List;
 
-/**
- * @Author: shuyizhi
- * @Date: 2018-07-12 14:37
- * @Description:
- */
+/** @Author: shuyizhi @Date: 2018-07-12 14:37 @Description: */
 public class StudentJdbcTemplate implements StudentDao {
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplate;
@@ -31,11 +27,11 @@ public class StudentJdbcTemplate implements StudentDao {
 
     @Override
     public Student getStudent(Integer id) {
-        //region query List方式
-        //String sql = "select id,age,name from student where id=?;";
-        //List<Student> list = jdbcTemplate.query(sql, new StudentMapper(), 1);
-        //return (null != list && list.size() > 0) ? list.get(0) : null;
-        //endregion
+        // region query List方式
+        // String sql = "select id,age,name from student where id=?;";
+        // List<Student> list = jdbcTemplate.query(sql, new StudentMapper(), 1);
+        // return (null != list && list.size() > 0) ? list.get(0) : null;
+        // endregion
 
         String sql = "select id,age,name from student where id=?;";
         Student student = jdbcTemplate.queryForObject(sql, new StudentMapper(), id);
@@ -44,7 +40,9 @@ public class StudentJdbcTemplate implements StudentDao {
 
     @Override
     public List<Student> listStudents() {
-        String sql = "select * from student;";
+        // String sql = "select * from student;";
+        // return jdbcTemplate.query(sql, new StudentMapper());
+        String sql = "select * from student";
         return jdbcTemplate.query(sql, new StudentMapper());
     }
 

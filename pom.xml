@@ -42,6 +42,8 @@
         <module>netty</module>
         <module>RPC</module>
         <module>jsoup</module>
+        <module>hutool</module>
+        <module>mybatisgenerator</module>
     </modules>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
@@ -199,6 +201,30 @@
             <version>1.4</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/jxbrowser/jxbrowser -->
+        <dependency>
+            <groupId>jxbrowser</groupId>
+            <artifactId>jxbrowser</artifactId>
+            <version>6.1.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jxbrowser/jxbrowser-win -->
+        <dependency>
+            <groupId>jxbrowser</groupId>
+            <artifactId>jxbrowser-win</artifactId>
+            <version>6.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>17.0.0</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 

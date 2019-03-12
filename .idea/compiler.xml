@@ -10,6 +10,7 @@
         <module name="aop" />
         <module name="design" />
         <module name="guava" />
+        <module name="hutool" />
         <module name="jsoup" />
         <module name="mina" />
         <module name="mlthread" />
@@ -30,9 +31,11 @@
       <module name="aop" target="1.8" />
       <module name="design" target="1.8" />
       <module name="guava" target="1.8" />
+      <module name="hutool" target="1.8" />
       <module name="jsoup" target="1.8" />
       <module name="mina" target="1.8" />
       <module name="mlthread" target="1.8" />
+      <module name="mybatisgenerator" target="1.8" />
       <module name="netty" target="1.8" />
       <module name="nio" target="1.8" />
       <module name="proxy" target="1.8" />
