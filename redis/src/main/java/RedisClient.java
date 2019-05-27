@@ -5,11 +5,7 @@ import redis.clients.jedis.JedisPoolConfig;
 
 import java.util.ResourceBundle;
 
-/**
- * @Author: shuyizhi
- * @Date: 2018/4/13 10:05
- * @Description:
- */
+/** @Author: shuyizhi @Date: 2018/4/13 10:05 @Description: */
 public class RedisClient {
     public static JedisPool jedisPool;
 
@@ -22,13 +18,13 @@ public class RedisClient {
         int port = Integer.parseInt(resourceBundle.getString("redis.port"));
 
         JedisPoolConfig config = new JedisPoolConfig();
-        //设置最大连接数据
+        // 设置最大连接数据
         config.setMaxTotal(maxActive);
-        //设置最大空闲数
+        // 设置最大空闲数
         config.setMaxIdle(maxIdle);
-        //设置超时时间
+        // 设置超时时间
         config.setMaxWaitMillis(maxWait);
-        //初始化连接池
+        // 初始化连接池
         jedisPool = new JedisPool(config, ip, port);
     }
 
@@ -50,7 +46,7 @@ public class RedisClient {
 
     public static boolean del(String key) {
         Jedis jedis = null;
-        long result = 0l;
+        long result = 0L;
         try {
             jedis = jedisPool.getResource();
             result = jedis.del(key);
