@@ -12,7 +12,7 @@
     <artifactId>mina</artifactId>
 
     <properties>
-        <mina.version>2.0.16</mina.version>
+        <mina.version>2.1.5</mina.version>
     </properties>
     <dependencies>
         <!-- mina -->
